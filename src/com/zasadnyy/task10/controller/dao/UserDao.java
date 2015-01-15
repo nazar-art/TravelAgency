@@ -14,7 +14,7 @@ public class UserDao implements IBaseDao<User> {
     private static Logger log = Logger.getLogger(UserDao.class);
 
     @Override
-    public User getByID(int id) {
+    public User find(int id) {
         User user = new User();
         try {
             PreparedStatement select = UserTransformer.getInstance().getSelectStatementById(id);
@@ -35,7 +35,7 @@ public class UserDao implements IBaseDao<User> {
             insert.executeUpdate();
             ResultSet keys = insert.getGeneratedKeys();
             keys.next();
-            user = getByID(keys.getInt(1));
+            user = find(keys.getInt(1));
         } catch (SQLException e) {
             log.error(e);
         }

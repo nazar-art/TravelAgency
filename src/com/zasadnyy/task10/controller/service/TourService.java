@@ -12,8 +12,8 @@ public class TourService implements IBaseService<Tour> {
     TourDao dao = new TourDao();
 
     @Override
-    public Tour getByID(int id) {
-        return dao.getByID(id);
+    public Tour find(int id) {
+        return dao.find(id);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class TourService implements IBaseService<Tour> {
     }
 
     public void delete(int tourId, HttpServlet servlet) {
-        Tour tour = getByID(tourId);
+        Tour tour = find(tourId);
         delete(tour, servlet);
     }
 

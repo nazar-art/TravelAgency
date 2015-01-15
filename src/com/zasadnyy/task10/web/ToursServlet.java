@@ -25,7 +25,7 @@ public class ToursServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("select") != null){
+        if (request.getParameter("select") != null) {
             String type = request.getParameter("select");
             tours = tourService.getSelectedTours(type);
             request.setAttribute("tours", tours);

@@ -1,7 +1,7 @@
 package com.zasadnyy.task10.controller.transformer;
 
 import com.zasadnyy.task10.controller.persistance.ConnectionManager;
-import com.zasadnyy.task10.model.SQLStatements;
+import com.zasadnyy.task10.utils.SQLStatements;
 import com.zasadnyy.task10.model.Tour;
 import org.apache.log4j.Logger;
 

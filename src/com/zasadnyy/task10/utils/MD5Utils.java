@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
 public class MD5Utils {
     public static String getMD5String(String text) {
         String result = "";
-        MessageDigest messageDigest = null;
+        MessageDigest messageDigest;
         try {
             messageDigest = MessageDigest.getInstance("MD5");
             messageDigest.reset();

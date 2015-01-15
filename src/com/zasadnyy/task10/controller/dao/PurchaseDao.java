@@ -14,7 +14,7 @@ public class PurchaseDao implements IBaseDao<Purchase> {
     private static Logger log = Logger.getLogger(PurchaseDao.class);
 
     @Override
-    public Purchase getByID(int id) {
+    public Purchase find(int id) {
         Purchase purchase = new Purchase();
         try {
             PreparedStatement select = PurchaseTransformer.getInstance().getSelectStatementById(id);
@@ -35,7 +35,7 @@ public class PurchaseDao implements IBaseDao<Purchase> {
             insert.executeUpdate();
             ResultSet keys = insert.getGeneratedKeys();
             keys.next();
-            purchase = getByID(keys.getInt(1));
+            purchase = find(keys.getInt(1));
         } catch (SQLException e) {
             log.error(e);
         }

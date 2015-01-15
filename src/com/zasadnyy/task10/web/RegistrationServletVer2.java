@@ -2,7 +2,7 @@ package com.zasadnyy.task10.web;
 
 import com.zasadnyy.task10.controller.service.UserService;
 import com.zasadnyy.task10.model.User;
-import com.zasadnyy.task10.model.ValidationErrors;
+import com.zasadnyy.task10.utils.ValidationErrors;
 import com.zasadnyy.task10.utils.FileUploadUtils;
 import com.zasadnyy.task10.utils.ValidationUtils;
 import org.apache.commons.fileupload.FileItem;

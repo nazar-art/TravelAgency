@@ -14,7 +14,7 @@ public class TourDao implements IBaseDao<Tour> {
     private static Logger log = Logger.getLogger(TourDao.class);
 
     @Override
-    public Tour getByID(int id) {
+    public Tour find(int id) {
         Tour tour = new Tour();
         try {
             PreparedStatement select = TourTransformer.getInstance().getSelectStatementById(id);
@@ -35,7 +35,7 @@ public class TourDao implements IBaseDao<Tour> {
             insert.executeUpdate();
             ResultSet keys = insert.getGeneratedKeys();
             keys.next();
-            tour = getByID(keys.getInt(1));
+            tour = find(keys.getInt(1));
         } catch (SQLException e) {
             log.error(e);
         }

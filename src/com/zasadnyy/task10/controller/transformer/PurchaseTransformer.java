@@ -4,7 +4,7 @@ import com.zasadnyy.task10.controller.dao.TourDao;
 import com.zasadnyy.task10.controller.dao.UserDao;
 import com.zasadnyy.task10.controller.persistance.ConnectionManager;
 import com.zasadnyy.task10.model.Purchase;
-import com.zasadnyy.task10.model.SQLStatements;
+import com.zasadnyy.task10.utils.SQLStatements;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -34,8 +34,8 @@ public class PurchaseTransformer implements IBaseTranformer<Purchase> {
         TourDao tourDao = new TourDao();
         try {
             purchase.setId(rs.getInt("id"));
-            purchase.setUser(userDao.getByID(rs.getInt("user_id")));
-            purchase.setTour(tourDao.getByID(rs.getInt("tour_id")));
+            purchase.setUser(userDao.find(rs.getInt("user_id")));
+            purchase.setTour(tourDao.find(rs.getInt("tour_id")));
             purchase.setTimeOfPurchase(rs.getTimestamp("time_of_purchase"));
             purchase.setPrice(rs.getDouble("price"));
             purchase.setChecked(rs.getBoolean("checked"));

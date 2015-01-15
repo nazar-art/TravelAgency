@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ValidationUtils {
+
     private static Logger log = Logger.getLogger(ValidationUtils.class);
 
     public static boolean isNumber(String str) {

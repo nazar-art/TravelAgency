@@ -11,8 +11,8 @@ public class UserService implements IBaseService<User> {
     private UserDao dao = new UserDao();
 
     @Override
-    public User getByID(int id) {
-        return dao.getByID(id);
+    public User find(int id) {
+        return dao.find(id);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class UserService implements IBaseService<User> {
     }
 
     public void delete(int userId, HttpServlet servlet) {
-        User user = getByID(userId);
+        User user = find(userId);
         delete(user, servlet);
     }
 

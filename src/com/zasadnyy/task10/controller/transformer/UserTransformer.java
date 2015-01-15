@@ -1,7 +1,7 @@
 package com.zasadnyy.task10.controller.transformer;
 
 import com.zasadnyy.task10.controller.persistance.ConnectionManager;
-import com.zasadnyy.task10.model.SQLStatements;
+import com.zasadnyy.task10.utils.SQLStatements;
 import com.zasadnyy.task10.model.User;
 import org.apache.log4j.Logger;
 
@@ -62,7 +62,7 @@ public class UserTransformer implements IBaseTranformer<User> {
             insert.setString(2, user.getLastName());
             insert.setString(3, user.getEmail());
             insert.setString(4, user.getPassword());
-            insert.setString(5,user.getImage());
+            insert.setString(5, user.getImage());
         } catch (SQLException e) {
             log.error(e);
         }
@@ -108,9 +108,9 @@ public class UserTransformer implements IBaseTranformer<User> {
     public PreparedStatement listOfObjects() {
         PreparedStatement select = null;
         try (Connection connection = ConnectionManager.getConnection()) {
-        select = connection
-                .prepareStatement(SQLStatements.SELECT_FROM_USERS);
-        }catch (SQLException e) {
+            select = connection
+                    .prepareStatement(SQLStatements.SELECT_FROM_USERS);
+        } catch (SQLException e) {
             log.error(e);
         }
         return select;

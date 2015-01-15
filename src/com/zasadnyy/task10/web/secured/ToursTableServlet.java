@@ -2,7 +2,7 @@ package com.zasadnyy.task10.web.secured;
 
 import com.zasadnyy.task10.controller.service.TourService;
 import com.zasadnyy.task10.model.Tour;
-import com.zasadnyy.task10.model.ValidationErrors;
+import com.zasadnyy.task10.utils.ValidationErrors;
 import com.zasadnyy.task10.utils.FileUploadUtils;
 import com.zasadnyy.task10.utils.ValidationUtils;
 import org.apache.log4j.Logger;
@@ -75,7 +75,7 @@ public class ToursTableServlet extends HttpServlet {
 
     public void updateTour(HttpServletRequest request) throws ServletException, IOException, ParseException {
         int id = Integer.parseInt(request.getParameter("update"));
-        Tour tour = tourService.getByID(id);
+        Tour tour = tourService.find(id);
 
         String name = (!ValidationUtils.isNullOrEmpty(request.getParameter("name-" + id)))
                 ? request.getParameter("name-" + id) : tour.getName();

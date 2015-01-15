@@ -9,11 +9,12 @@ import javax.servlet.http.HttpServlet;
 import java.util.List;
 
 public class PurchaseService implements IBaseService<Purchase> {
+
     private PurchaseDao dao = new PurchaseDao();
 
     @Override
-    public Purchase getByID(int id) {
-        return dao.getByID(id);
+    public Purchase find(int id) {
+        return dao.find(id);
     }
 
     @Override
@@ -23,7 +24,7 @@ public class PurchaseService implements IBaseService<Purchase> {
 
     public Purchase save(User user, int tourId) {
         TourService tourService = new TourService();
-        Tour tour = tourService.getByID(tourId);
+        Tour tour = tourService.find(tourId);
         Purchase purchase = new Purchase();
         purchase.setUser(user);
         purchase.setTour(tour);
@@ -45,7 +46,7 @@ public class PurchaseService implements IBaseService<Purchase> {
     }
 
     public void delete(int purchaseId, HttpServlet servlet) {
-        Purchase purchase = getByID(purchaseId);
+        Purchase purchase = find(purchaseId);
         delete(purchase, servlet);
     }
 
@@ -55,7 +56,7 @@ public class PurchaseService implements IBaseService<Purchase> {
     }
 
     public Purchase check(int purchaseId) {
-        Purchase purchase = getByID(purchaseId);
+        Purchase purchase = find(purchaseId);
         purchase.setChecked(true);
         return update(purchase);
     }

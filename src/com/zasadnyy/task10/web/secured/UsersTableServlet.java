@@ -63,20 +63,20 @@ public class UsersTableServlet extends HttpServlet {
 
     public void updateUser(HttpServletRequest request) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("update"));
-        User user = userService.getByID(id);
+        User user = userService.find(id);
 
         String firstName = (!ValidationUtils.isNullOrEmpty(request.getParameter("first_name-" + id)))
                 ? request.getParameter("first_name-" + id) : user.getFirstName();
         String lastName = (!ValidationUtils.isNullOrEmpty(request.getParameter("last_name-" + id)))
                 ? request.getParameter("last_name-" + id) : user.getLastName();
         String email = (!ValidationUtils.isNullOrEmpty(request.getParameter("email-" + id))
-        && ValidationUtils.validEmail(request.getParameter("email-" + id)))
+                && ValidationUtils.validEmail(request.getParameter("email-" + id)))
                 ? request.getParameter("email-" + id) : user.getEmail();
         if (!(userService.getByEmail(email) == null)) {
             email = user.getEmail();
         }
         int discount = (!ValidationUtils.isNumber(request.getParameter("discount-" + id))
-            && ValidationUtils.isNumber(request.getParameter("discount-" + id)))
+                && ValidationUtils.isNumber(request.getParameter("discount-" + id)))
                 ? Integer.parseInt(request.getParameter("discount-" + id)) : user.getDiscount();
         if (discount < 0 || discount > 100) {
             discount = user.getDiscount();

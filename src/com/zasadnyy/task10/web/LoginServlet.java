@@ -16,6 +16,7 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+
     private static Logger log = Logger.getLogger(LoginServlet.class);
 
     @Override
